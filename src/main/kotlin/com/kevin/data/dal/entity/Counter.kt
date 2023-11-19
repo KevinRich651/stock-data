@@ -1,18 +1,17 @@
 package com.kevin.data.dal.entity
 
-import org.springframework.data.annotation.Id
 import java.sql.Timestamp
 import javax.persistence.*
 
 @Entity
 @Table(name = "counter")
-data class Counter(
+class Counter(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    val id: Int=0,
 
     @Column(nullable = false)
-    var count: Int,
+    var count: Int=0,
 
     @Column(nullable = false, name = "create_time")
     val createTime: Timestamp = Timestamp(System.currentTimeMillis())

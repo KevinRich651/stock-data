@@ -26,7 +26,7 @@ class CounterController {
      * @return API response json
      */
     @GetMapping(value = ["/api/count"])
-    fun get(): ApiResponse {
+    fun get(): ApiResponse<Int> {
         logger.info("/api/count get request")
         val cnt: Int = counterService.getCount()
         return ApiResponse.ok(cnt)
@@ -38,7 +38,7 @@ class CounterController {
      * @return API response json
      */
     @PostMapping(value = ["/api/count"])
-    fun create(@RequestBody request: CounterRequest): ApiResponse {
+    fun create(@RequestBody request: CounterRequest): ApiResponse<Any> {
         logger.info("/api/count post request, action: {}", request.action)
         return if (request.action.equals("inc")) {
             ApiResponse.ok(counterService.upsertCount())

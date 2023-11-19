@@ -1,10 +1,11 @@
 package com.kevin.data
 
-import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
 
-@SpringBootApplication(scanBasePackages =  ["com.kevin.data"])
-class WxCloudApplication
-fun main() {
-    SpringApplication.run(WxCloudApplication::class.java)
+@SpringBootApplication(scanBasePackages = ["com.kevin.data"])
+open class WxCloudApplication
+
+fun main(args: Array<String>) {
+    runApplication<WxCloudApplication>(*args)
 }

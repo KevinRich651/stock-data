@@ -2,18 +2,18 @@ package com.kevin.data.model
 
 import java.util.HashMap
 
-class ApiResponse private constructor(private val code: Int, private val errorMsg: String, private val data: Any) {
+data class ApiResponse<T>(val code: Int, val errorMsg: String? = null, val data: T? = null) {
     companion object {
-        fun ok(): ApiResponse {
-            return ApiResponse(0, "", HashMap<Any, Any>())
+        fun ok(): ApiResponse<Any> {
+            return ApiResponse(code = 0, errorMsg = "")
         }
 
-        fun ok(data: Any): ApiResponse {
-            return ApiResponse(0, "", data)
+        fun <T> ok(data: T): ApiResponse<T> {
+            return ApiResponse(code = 0, data = data)
         }
 
-        fun error(errorMsg: String): ApiResponse {
-            return ApiResponse(0, errorMsg, HashMap<Any, Any>())
+        fun error(errorMsg: String): ApiResponse<Any> {
+            return ApiResponse(code = 0, errorMsg = errorMsg)
         }
     }
 }
